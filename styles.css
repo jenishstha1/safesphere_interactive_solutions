@@ -11,8 +11,10 @@
 html{scroll-behavior:smooth;scroll-padding-top:5rem}
 body{margin:0;font-family:var(--font);line-height:1.65;color:var(--fg);
   background:linear-gradient(135deg,var(--canvas),var(--mid) 50%,var(--end)) fixed}
-p, .card p, .lead, article p, .steps p, dd, .drawer-desc{text-align:justify!important;text-justify:inter-word!important}
-.role, .card .role, .person .role{text-align:center!important}
+p, .card:not(.person) p, .lead, article:not(.person) p, dd, .drawer-desc{text-align:justify!important;text-justify:inter-word!important}
+.person, .person p, .person h3, .person .role, .role, .card .role{text-align:center!important}
+.steps li, .steps p, .steps h3{text-align:center!important}
+.steps li::before{margin:0 auto .6rem!important}
 img{max-width:100%;height:auto}
 a{color:var(--accent)}
 a:hover{color:var(--accent-h)}
@@ -76,9 +78,10 @@ h3{margin:.2rem 0 .5rem;font-size:1.15rem}
 dl{margin:0}dt{font-weight:700;margin-top:.8rem}dd{margin:0;color:var(--muted)}
 
 .steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;padding:0;margin-top:2rem}
-.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.2rem}
-.steps li::before{content:counter(s);display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--accent);color:var(--on-accent);font-weight:700;margin-bottom:.6rem}
-.steps p{color:var(--muted);font-size:.92rem;margin:0}
+.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.2rem;text-align:center}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--accent);color:var(--on-accent);font-weight:700;margin:0 auto .6rem}
+.steps h3{text-align:center;margin:.2rem 0 .5rem}
+.steps p{color:var(--muted);font-size:.92rem;margin:0;text-align:center!important}
 
 .pills{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;padding:0;margin:0}
 .pills li{background:var(--raised);padding:.3rem .8rem;border-radius:999px;font-size:.88rem;color:var(--fg)}
