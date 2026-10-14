@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Demo · SafeShift 360° Simulation · SafeSphere</title>
+  <meta name="description" content="Experience SafeShift interactive 360° warehouse safety training simulator, supervisor analytics dashboard, and HSE knowledge check assessment.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css?v=20261014_06">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="index.html" aria-label="SafeSphere Interactive Solutions, home">
+        <img src="logo.png" alt="SafeSphere Logo" width="40" height="40">
+        <span><strong>SafeSphere</strong><small>Interactive Solutions</small></span>
+      </a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" aria-label="Primary">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="work.html">Our work</a></li>
+          <li><a href="demo.html" class="active" aria-current="page">Live Demo</a></li>
+          <li><a href="process.html">Process</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="brand.html">Brand</a></li>
+          <li><a class="btn btn-sm" href="contact.html">Contact us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-hero">
+      <div class="wrap">
+        <p class="eyebrow">Interactive Simulator &amp; Assessment</p>
+        <h1>Experience SafeShift in Action</h1>
+        <p class="lead narrow">Try the interactive training module we built for logistics teams. Spot workplace hazards in a simulated warehouse bay, evaluate key safety procedures under UK HSE standards, or inspect trainer analytics.</p>
+      </div>
+    </div>
+
+    <section id="demo" class="section">
+      <div class="wrap">
+        <div class="demo-container">
+          <div class="demo-header-bar">
+            <div class="demo-tabs" role="tablist" aria-label="SafeShift Mode Selector">
+              <button class="demo-tab-btn active" role="tab" aria-selected="true" data-tab="sim" onclick="window.switchTab('sim')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <span>360° Hazard Spotting</span>
+              </button>
+              <button class="demo-tab-btn" role="tab" aria-selected="false" data-tab="dash" onclick="window.switchTab('dash')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <span>Trainer Dashboard</span>
+              </button>
+              <button class="demo-tab-btn" role="tab" aria-selected="false" data-tab="quiz" onclick="window.switchTab('quiz')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span>Knowledge Check</span>
+              </button>
+            </div>
+            <div class="demo-status-pill" id="demo-role-status" aria-live="polite">
+              <span class="demo-status-dot"></span> Live Simulation • Role: Trainee
+            </div>
+          </div>
+
+          <div class="demo-content-area">
+            <!-- TAB 1: 360 Hazard Simulator -->
+            <div id="demo-sim-view" class="demo-view active">
+              <div class="sim-viewport">
+                <div class="sim-hud">
+                  <div class="sim-metrics">
+                    <span class="sim-metric-item">Environment: <strong>Zone 3 Logistics Bay</strong></span>
+                    <span class="sim-metric-item">Hazards Found: <strong id="hazard-count">0 / 4</strong></span>
+                    <span class="sim-metric-item">Safety Score: <strong id="hazard-score">0 pts</strong></span>
+                  </div>
+                  <button id="sim-reset" class="sim-reset-btn" type="button" aria-label="Reset Hazard Spotting Simulator" onclick="window.resetSim()">
+                    ↻ Reset Scene
+                  </button>
+                </div>
+
+                <div class="sim-hint">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  <span>Click or tap the <strong>pulsing hazard indicators</strong> (1 to 4) on the warehouse map, or select a hazard below:</span>
+                </div>
+
+                <div class="hazard-select-grid">
+                  <button id="quick-btn-1" type="button" class="hazard-select-card" onclick="window.openHazardDrawer('1')" aria-label="Hazard 1: Unstable High Pallet">
+                    <div class="hazard-card-head">
+                      <span class="hazard-icon">⚠️ Hazard 1</span>
+                      <span class="hazard-badge">Inspect</span>
+                    </div>
+                    <span class="hazard-name">Unstable High Pallet</span>
+                    <span class="hazard-sub">HSE Warehousing HSG76</span>
+                    <span class="hazard-action-hint">Click to inspect &rarr;</span>
+                  </button>
+                  <button id="quick-btn-2" type="button" class="hazard-select-card" onclick="window.openHazardDrawer('2')" aria-label="Hazard 2: Blocked Fire Exit">
+                    <div class="hazard-card-head">
+                      <span class="hazard-icon">⚠️ Hazard 2</span>
+                      <span class="hazard-badge">Inspect</span>
+                    </div>
+                    <span class="hazard-name">Blocked Fire Exit</span>
+                    <span class="hazard-sub">Fire Safety Order 2005</span>
+                    <span class="hazard-action-hint">Click to inspect &rarr;</span>
+                  </button>
+                  <button id="quick-btn-3" type="button" class="hazard-select-card" onclick="window.openHazardDrawer('3')" aria-label="Hazard 3: Manual Lifting Posture">
+                    <div class="hazard-card-head">
+                      <span class="hazard-icon">⚠️ Hazard 3</span>
+                      <span class="hazard-badge">Inspect</span>
+                    </div>
+                    <span class="hazard-name">Manual Lifting Posture</span>
+                    <span class="hazard-sub">Manual Handling Regs 1992</span>
+                    <span class="hazard-action-hint">Click to inspect &rarr;</span>
+                  </button>
+                  <button id="quick-btn-4" type="button" class="hazard-select-card" onclick="window.openHazardDrawer('4')" aria-label="Hazard 4: Chemical Spill">
+                    <div class="hazard-card-head">
+                      <span class="hazard-icon">⚠️ Hazard 4</span>
+                      <span class="hazard-badge">Inspect</span>
+                    </div>
+                    <span class="hazard-name">Chemical Spill</span>
+                    <span class="hazard-sub">COSHH &amp; HASAWA 1974</span>
+                    <span class="hazard-action-hint">Click to inspect &rarr;</span>
+                  </button>
+                </div>
+
+                <div class="sim-stage">
+                  <!-- Interactive SVG Warehouse Environment -->
+                  <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive 360-degree warehouse training bay with hazard spots">
+                    <defs>
+                      <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#071318"/>
+                        <stop offset="100%" stop-color="#0f2129"/>
+                      </linearGradient>
+                      <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#142229"/>
+                        <stop offset="100%" stop-color="#091418"/>
+                      </linearGradient>
+                      <linearGradient id="lightCone" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/>
+                      </linearGradient>
+                      <linearGradient id="rackGrad" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#1b3947"/>
+                        <stop offset="100%" stop-color="#2c5163"/>
+                      </linearGradient>
+                      <pattern id="hazardChevrons" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                        <rect width="10" height="20" fill="#eab308"/>
+                        <rect x="10" width="10" height="20" fill="#18181b"/>
+                      </pattern>
+                    </defs>
+
+                    <!-- Background Wall & Overhead Structural Girders -->
+                    <rect x="0" y="0" width="800" height="240" fill="url(#wallGrad)"/>
+                    <line x1="0" y1="40" x2="800" y2="40" stroke="#1f3b48" stroke-width="3"/>
+                    <line x1="0" y1="80" x2="800" y2="80" stroke="#19323d" stroke-width="2"/>
+                    <line x1="160" y1="0" x2="240" y2="240" stroke="#162c37" stroke-width="2"/>
+                    <line x1="400" y1="0" x2="400" y2="240" stroke="#162c37" stroke-width="2"/>
+                    <line x1="640" y1="0" x2="560" y2="240" stroke="#162c37" stroke-width="2"/>
+
+                    <!-- Overhead High-Bay Lighting Cones -->
+                    <polygon points="200,40 100,240 300,240" fill="url(#lightCone)"/>
+                    <circle cx="200" cy="40" r="5" fill="#00e5ff"/>
+                    <polygon points="600,40 500,240 700,240" fill="url(#lightCone)"/>
+                    <circle cx="600" cy="40" r="5" fill="#00e5ff"/>
+
+                    <!-- Warehouse Polished Concrete Floor -->
+                    <polygon points="0,240 800,240 800,450 0,450" fill="url(#floorGrad)"/>
+
+                    <!-- Safety Yellow Walkway Markings -->
+                    <polygon points="200,450 260,450 430,240 400,240" fill="url(#hazardChevrons)" opacity="0.8"/>
+
+                    <!-- Left Heavy Storage Pallet Racking (Racks 1 & 2) -->
+                    <rect x="50" y="70" width="220" height="280" fill="none" stroke="#254a5a" stroke-width="5"/>
+                    <line x1="50" y1="160" x2="270" y2="160" stroke="#254a5a" stroke-width="5"/>
+                    <line x1="50" y1="250" x2="270" y2="250" stroke="#254a5a" stroke-width="5"/>
+                    <rect x="50" y="65" width="220" height="8" fill="#1b3947"/>
+
+                    <!-- Mid Shelf Stored Inventory -->
+                    <rect x="65" y="175" width="75" height="70" rx="3" fill="#8d5b2d" stroke="#5c3818" stroke-width="2"/>
+                    <rect x="150" y="170" width="105" height="75" rx="3" fill="#3a5a6b" stroke="#233a46" stroke-width="2"/>
+
+                    <!-- HAZARD 1: Unstable, Overhanging high pallet leaning precariously -->
+                    <g id="scene-hazard-1" transform="translate(70, 78)">
+                      <rect x="50" y="3" width="95" height="72" rx="4" fill="#c26a24" stroke="#e5484d" stroke-width="2" transform="rotate(11 75 40)"/>
+                      <line x1="55" y1="40" x2="135" y2="40" stroke="#f6ad55" stroke-width="2" transform="rotate(11 75 40)"/>
+                      <text x="95" y="44" font-size="11" font-weight="900" fill="#fff" text-anchor="middle" transform="rotate(11 75 40)">FRAGILE</text>
+                    </g>
+
+                    <!-- Center Fire Exit Door -->
+                    <rect x="350" y="140" width="100" height="150" fill="#0d1b21" stroke="#22c55e" stroke-width="3"/>
+                    <rect x="365" y="148" width="70" height="20" fill="#15803d" rx="2"/>
+                    <text x="400" y="162" font-size="10" font-family="sans-serif" font-weight="bold" fill="#ffffff" text-anchor="middle">EXIT ➔</text>
+                    <line x1="400" y1="168" x2="400" y2="290" stroke="#22c55e" stroke-dasharray="4"/>
+
+                    <!-- HAZARD 2: Blocked Fire Exit Doors with Stacked Pallets -->
+                    <g id="scene-hazard-2" transform="translate(360, 245)">
+                      <rect x="0" y="0" width="80" height="14" fill="#a06028" stroke="#4a2c10" stroke-width="1.5" rx="1"/>
+                      <rect x="2" y="-12" width="76" height="13" fill="#b87333" stroke="#4a2c10" stroke-width="1.5" rx="1"/>
+                      <rect x="4" y="-24" width="72" height="13" fill="#a06028" stroke="#4a2c10" stroke-width="1.5" rx="1"/>
+                      <line x1="0" y1="14" x2="80" y2="14" stroke="#e5484d" stroke-width="3"/>
+                    </g>
+
+                    <!-- Right Pallet Racking (Racks 3 & 4) -->
+                    <rect x="550" y="70" width="200" height="280" fill="none" stroke="#254a5a" stroke-width="5"/>
+                    <line x1="550" y1="160" x2="750" y2="160" stroke="#254a5a" stroke-width="5"/>
+                    <line x1="550" y1="250" x2="750" y2="250" stroke="#254a5a" stroke-width="5"/>
+                    <rect x="565" y="180" width="50" height="65" rx="6" fill="#1d4ed8"/>
+                    <rect x="625" y="180" width="50" height="65" rx="6" fill="#1d4ed8"/>
+                    <rect x="685" y="180" width="50" height="65" rx="6" fill="#1d4ed8"/>
+
+                    <!-- Forklift Truck in Transit Lane -->
+                    <g transform="translate(530, 270)">
+                      <rect x="20" y="45" width="55" height="35" rx="4" fill="#eab308"/>
+                      <rect x="35" y="25" width="30" height="30" rx="3" fill="#3b82f6" opacity="0.75"/>
+                      <rect x="15" y="18" width="6" height="65" fill="#475569"/>
+                      <line x1="0" y1="78" x2="20" y2="78" stroke="#94a3b8" stroke-width="5"/>
+                      <circle cx="35" cy="80" r="11" fill="#090d0f" stroke="#475569" stroke-width="3"/>
+                      <circle cx="65" cy="80" r="11" fill="#090d0f" stroke="#475569" stroke-width="3"/>
+                    </g>
+
+                    <!-- HAZARD 3: Operative Lifting Incorrectly (Bent Spine & Locked Knees) -->
+                    <g id="scene-hazard-3" transform="translate(260, 290)">
+                      <circle cx="45" cy="22" r="9" fill="#00e5ff"/>
+                      <path d="M45,31 C40,46 25,55 35,70" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" fill="none"/>
+                      <line x1="35" y1="70" x2="25" y2="105" stroke="#1e293b" stroke-width="5" stroke-linecap="round"/>
+                      <line x1="38" y1="70" x2="45" y2="105" stroke="#1e293b" stroke-width="5" stroke-linecap="round"/>
+                      <path d="M42,40 L60,65 L55,75" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" fill="none"/>
+                      <rect x="52" y="60" width="36" height="36" rx="3" fill="#b45309" stroke="#78350f" stroke-width="2"/>
+                      <text x="70" y="80" font-size="8" fill="#fff" font-weight="bold" text-anchor="middle">35 KG</text>
+                      <path d="M30,42 Q20,48 30,54" stroke="#e5484d" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    </g>
+
+                    <!-- HAZARD 4: Chemical / Liquid Spill with Pedestrian Slip Hazard -->
+                    <g id="scene-hazard-4" transform="translate(460, 360)">
+                      <ellipse cx="60" cy="15" rx="55" ry="14" fill="#0284c7" opacity="0.85"/>
+                      <ellipse cx="60" cy="15" rx="42" ry="9" fill="#38bdf8" opacity="0.6"/>
+                      <circle cx="20" cy="8" r="4" fill="#0284c7" opacity="0.8"/>
+                      <circle cx="110" cy="20" r="5" fill="#0284c7" opacity="0.8"/>
+                    </g>
+
+                    <!-- SVG Fallback Hotspots for Accessible Pointer Events -->
+                    <g id="hotspot-1" class="hotspot-group" onclick="window.openHazardDrawer('1')" tabindex="0" role="button" aria-label="Hazard 1: Unstable pallet on high rack" transform="translate(150, 95)" data-hazard="1">
+                      <circle class="hotspot-pulse" cx="0" cy="0" r="18" fill="#e5484d" opacity="0.7"/>
+                      <circle class="hotspot-core" cx="0" cy="0" r="16" fill="#e5484d" stroke="#fff" stroke-width="2"/>
+                      <text class="hotspot-icon" x="0" y="5" font-size="13" font-family="sans-serif" font-weight="900" fill="#fff" text-anchor="middle">1</text>
+                    </g>
+                    <g id="hotspot-2" class="hotspot-group" onclick="window.openHazardDrawer('2')" tabindex="0" role="button" aria-label="Hazard 2: Blocked emergency fire exit" transform="translate(400, 195)" data-hazard="2">
+                      <circle class="hotspot-pulse" cx="0" cy="0" r="18" fill="#e5484d" opacity="0.7"/>
+                      <circle class="hotspot-core" cx="0" cy="0" r="16" fill="#e5484d" stroke="#fff" stroke-width="2"/>
+                      <text class="hotspot-icon" x="0" y="5" font-size="13" font-family="sans-serif" font-weight="900" fill="#fff" text-anchor="middle">2</text>
+                    </g>
+                    <g id="hotspot-3" class="hotspot-group" onclick="window.openHazardDrawer('3')" tabindex="0" role="button" aria-label="Hazard 3: Poor manual handling lifting posture" transform="translate(290, 310)" data-hazard="3">
+                      <circle class="hotspot-pulse" cx="0" cy="0" r="18" fill="#e5484d" opacity="0.7"/>
+                      <circle class="hotspot-core" cx="0" cy="0" r="16" fill="#e5484d" stroke="#fff" stroke-width="2"/>
+                      <text class="hotspot-icon" x="0" y="5" font-size="13" font-family="sans-serif" font-weight="900" fill="#fff" text-anchor="middle">3</text>
+                    </g>
+                    <g id="hotspot-4" class="hotspot-group" onclick="window.openHazardDrawer('4')" tabindex="0" role="button" aria-label="Hazard 4: Unmarked chemical spill on transit pathway" transform="translate(510, 360)" data-hazard="4">
+                      <circle class="hotspot-pulse" cx="0" cy="0" r="18" fill="#e5484d" opacity="0.7"/>
+                      <circle class="hotspot-core" cx="0" cy="0" r="16" fill="#e5484d" stroke="#fff" stroke-width="2"/>
+                      <text class="hotspot-icon" x="0" y="5" font-size="13" font-family="sans-serif" font-weight="900" fill="#fff" text-anchor="middle">4</text>
+                    </g>
+                  </svg>
+
+                  <!-- Real HTML Hotspot Button Overlays on Warehouse Scene -->
+                  <div class="hotspots-overlay">
+                    <button id="hotspot-btn-1" type="button" class="scene-hotspot-btn" style="top:21.1%;left:18.75%;" onclick="window.openHazardDrawer('1')" aria-label="Inspect Hazard 1: Unstable Pallet">
+                      <span class="hotspot-pulse-ring"></span>
+                      <span>1</span>
+                    </button>
+                    <button id="hotspot-btn-2" type="button" class="scene-hotspot-btn" style="top:43.3%;left:50%;" onclick="window.openHazardDrawer('2')" aria-label="Inspect Hazard 2: Blocked Fire Exit">
+                      <span class="hotspot-pulse-ring"></span>
+                      <span>2</span>
+                    </button>
+                    <button id="hotspot-btn-3" type="button" class="scene-hotspot-btn" style="top:68.8%;left:36.25%;" onclick="window.openHazardDrawer('3')" aria-label="Inspect Hazard 3: Manual Lifting Technique">
+                      <span class="hotspot-pulse-ring"></span>
+                      <span>3</span>
+                    </button>
+                    <button id="hotspot-btn-4" type="button" class="scene-hotspot-btn" style="top:80%;left:63.75%;" onclick="window.openHazardDrawer('4')" aria-label="Inspect Hazard 4: Chemical Spill">
+                      <span class="hotspot-pulse-ring"></span>
+                      <span>4</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Centered Hazard Inspection Modal Dialog -->
+                <div id="sim-drawer" class="sim-drawer" aria-live="polite" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+                  <div class="drawer-backdrop" onclick="window.closeHazardDrawer()"></div>
+                  <div class="sim-drawer-modal">
+                    <div class="drawer-header">
+                      <div>
+                        <span id="drawer-badge" class="drawer-badge">Hazard Inspection</span>
+                        <h3 id="drawer-title" class="drawer-title">Hazard Inspection</h3>
+                        <p id="drawer-reg" class="drawer-reg">Compliance Standard</p>
+                      </div>
+                      <button id="drawer-close-btn" class="drawer-close" type="button" aria-label="Close hazard inspection dialog" onclick="window.closeHazardDrawer()">&times;</button>
+                    </div>
+                    <p id="drawer-desc" class="drawer-desc">Description of detected risk.</p>
+                    <h4 class="drawer-prompt-title">Select the Correct HSE Procedure:</h4>
+                    <div id="drawer-options" class="drawer-options"></div>
+                    <div id="drawer-feedback" class="drawer-feedback"></div>
+                    <div class="drawer-footer">
+                      <span style="font-size:.8rem;color:var(--muted);">Press Esc or click outside to dismiss</span>
+                      <button type="button" class="btn btn-ghost btn-sm" onclick="window.closeHazardDrawer()">← Return to Scene</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Completion Banner -->
+              <div id="sim-complete-banner" class="sim-completion-banner">
+                <h3>🎉 SafeShift Simulation Complete! (Score: 100/100)</h3>
+                <p>All four warehouse hazards were spotted and rectified according to HSE guidelines. SafeShift records this attempt to the server database for compliance auditing.</p>
+                <div style="display:flex;gap:1rem;justify-content:center;margin-top:1rem;flex-wrap:wrap;">
+                  <button id="btn-view-trainer-dash" class="btn btn-sm" type="button" onclick="window.switchTab('dash')">Inspect Trainer Analytics &rarr;</button>
+                  <button id="btn-restart-sim" class="btn btn-ghost btn-sm" type="button" onclick="window.resetSim()">Try Again</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 2: Trainer Analytics Dashboard -->
+            <div id="demo-dash-view" class="demo-view">
+              <div class="dash-kpis">
+                <div class="dash-kpi">
+                  <div class="dash-kpi-val">94.2%</div>
+                  <div class="dash-kpi-label">First-Time Pass Rate</div>
+                </div>
+                <div class="dash-kpi">
+                  <div class="dash-kpi-val">142</div>
+                  <div class="dash-kpi-label">Trainees Certified</div>
+                </div>
+                <div class="dash-kpi">
+                  <div class="dash-kpi-val">11m 45s</div>
+                  <div class="dash-kpi-label">Average Attempt Time</div>
+                </div>
+                <div class="dash-kpi">
+                  <div class="dash-kpi-val">0</div>
+                  <div class="dash-kpi-label">Open Critical Deficiencies</div>
+                </div>
+              </div>
+
+              <div class="dash-grid">
+                <div class="dash-card">
+                  <h3>Competency Breakdown (Cohort 4A)</h3>
+                  <p class="note" style="margin-top:-.2rem">Real-time skill mastery tracked across the 5 core learning outcomes.</p>
+                  
+                  <div class="dash-skill-bar">
+                    <div class="dash-skill-head">
+                      <span>Manual Handling &amp; Ergonomics</span>
+                      <strong>88%</strong>
+                    </div>
+                    <div class="dash-progress-track">
+                      <div class="dash-progress-fill" style="width: 88%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="dash-skill-bar">
+                    <div class="dash-skill-head">
+                      <span>Emergency Route Clearance</span>
+                      <strong>97%</strong>
+                    </div>
+                    <div class="dash-progress-track">
+                      <div class="dash-progress-fill" style="width: 97%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="dash-skill-bar">
+                    <div class="dash-skill-head">
+                      <span>High-Bay Stacking &amp; PUWER</span>
+                      <strong>82%</strong>
+                    </div>
+                    <div class="dash-progress-track">
+                      <div class="dash-progress-fill" style="width: 82%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="dash-skill-bar">
+                    <div class="dash-skill-head">
+                      <span>COSHH &amp; Chemical Spill Response</span>
+                      <strong>91%</strong>
+                    </div>
+                    <div class="dash-progress-track">
+                      <div class="dash-progress-fill" style="width: 91%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="dash-skill-bar">
+                    <div class="dash-skill-head">
+                      <span>Forklift Transit Safety</span>
+                      <strong>84%</strong>
+                    </div>
+                    <div class="dash-progress-track">
+                      <div class="dash-progress-fill" style="width: 84%; background: linear-gradient(90deg, #eab308, #22c55e);"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dash-card">
+                  <h3>Recent Trainee Log (S&amp;S Logistics Bay)</h3>
+                  <p class="note" style="margin-top:-.2rem">Database records audit-trail with timestamps and checkpoints.</p>
+                  <table class="dash-table">
+                    <thead>
+                      <tr>
+                        <th>Trainee</th>
+                        <th>Role</th>
+                        <th>Score</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Jordan M.</td>
+                        <td>Forklift Operator</td>
+                        <td>100%</td>
+                        <td><span class="badge-pass">Certified</span></td>
+                      </tr>
+                      <tr>
+                        <td>Priya K.</td>
+                        <td>Warehouse Picker</td>
+                        <td>95%</td>
+                        <td><span class="badge-pass">Certified</span></td>
+                      </tr>
+                      <tr>
+                        <td>Callum S.</td>
+                        <td>Shift Supervisor</td>
+                        <td>100%</td>
+                        <td><span class="badge-pass">Certified</span></td>
+                      </tr>
+                      <tr>
+                        <td>Amina D.</td>
+                        <td>Logistics Intake</td>
+                        <td>90%</td>
+                        <td><span class="badge-pass">Certified</span></td>
+                      </tr>
+                      <tr>
+                        <td>David L.</td>
+                        <td>Dock Loader</td>
+                        <td>95%</td>
+                        <td><span class="badge-pass">Certified</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: Quick Knowledge Check -->
+            <div id="demo-quiz-view" class="demo-view">
+              <div class="quiz-box">
+                <div class="quiz-q-num">Assessment Module &bull; Question <span id="quiz-curr">1</span> of 3</div>
+                <h3 id="quiz-question-text" class="quiz-question">Loading question...</h3>
+                <div id="quiz-options-container" class="quiz-options"></div>
+                <div id="quiz-explanation" class="drawer-feedback" style="margin-top:1rem"></div>
+                <div class="quiz-actions">
+                  <span id="quiz-score-indicator" class="quiz-score-indicator">Score: 0 / 3</span>
+                  <button id="quiz-next-btn" class="btn btn-sm" type="button" disabled onclick="window.nextQuizQuestion()">Next Question &rarr;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap foot">
+      <p>&copy; <span id="year">2026</span> SafeSphere Interactive Solutions. Team 4, CET257 Enterprise Project, University of Sunderland.</p>
+      <p><a href="index.html">Home</a> · <a href="contact.html">Contact Us</a> · <a href="#top">Back to top</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=20261014_06"></script>
+</body>
+</html>
+

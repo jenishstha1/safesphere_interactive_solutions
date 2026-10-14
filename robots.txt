@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: [PLACEHOLDER: https://your-live-url/]sitemap.xml

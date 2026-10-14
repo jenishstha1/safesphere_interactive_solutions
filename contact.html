@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us · SafeSphere Interactive Solutions</title>
+  <meta name="description" content="Get in touch with SafeSphere Interactive Solutions (Team 4, University of Sunderland) to discuss interactive health and safety training for your workforce.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css?v=20261014_06">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="index.html" aria-label="SafeSphere Interactive Solutions, home">
+        <img src="logo.png" alt="SafeSphere Logo" width="40" height="40">
+        <span><strong>SafeSphere</strong><small>Interactive Solutions</small></span>
+      </a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" aria-label="Primary">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="work.html">Our work</a></li>
+          <li><a href="demo.html">Live Demo</a></li>
+          <li><a href="process.html">Process</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="brand.html">Brand</a></li>
+          <li><a class="btn btn-sm active" href="contact.html" aria-current="page">Contact us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-hero">
+      <div class="wrap">
+        <p class="eyebrow">Direct Enquiries &amp; Consultations</p>
+        <h1>Let's Make Your Training Safer</h1>
+        <p class="lead narrow">Tell us about your team and your safety challenges. We reply to every enterprise and student project inquiry.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap narrow">
+        <div class="card" style="padding:2.2rem;background:var(--raised);border:1.5px solid var(--line);">
+          <form id="contact-form" action="mailto:[PLACEHOLDER: team@email.com]" method="post" enctype="text/plain" class="form" onsubmit="alert('Thank you for your enquiry. SafeSphere Team 4 will review your message.');">
+            <label for="name">Your full name</label>
+            <input id="name" name="name" autocomplete="name" required placeholder="e.g. Alex Morgan">
+
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="name@company.co.uk">
+
+            <label for="org">Organisation / Company</label>
+            <input id="org" name="organisation" placeholder="e.g. S&S Logistics UK">
+
+            <label for="interest">Area of interest</label>
+            <select id="interest" name="interest" style="width:100%;padding:.8rem;border-radius:8px;background:var(--surface);border:1px solid var(--line);color:var(--fg);font:inherit;margin-bottom:1rem;">
+              <option value="360-demo">Interactive 360° Warehouse Simulation</option>
+              <option value="trainer-analytics">Trainer Reporting &amp; Audit Dashboards</option>
+              <option value="custom-module">Custom Health &amp; Safety Module Development</option>
+              <option value="student-enterprise">University Enterprise Collaboration</option>
+            </select>
+
+            <label for="msg">How can we help your team?</label>
+            <textarea id="msg" name="message" rows="5" required placeholder="Briefly describe your workforce training challenges, compliance deadlines, or operational needs..."></textarea>
+
+            <button class="btn" type="submit" style="width:100%;margin-top:1rem;font-size:1.05rem;">Send Enquiry &rarr;</button>
+          </form>
+
+          <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.9rem;color:var(--muted);">
+            <div>
+              <strong>Prefer direct email?</strong><br>
+              <a href="mailto:[PLACEHOLDER: team@email.com]">[PLACEHOLDER: team@email.com]</a>
+            </div>
+            <div>
+              <strong>Academic Project:</strong><br>
+              <span>CET257 Enterprise Project, University of Sunderland</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap foot">
+      <p>&copy; <span id="year">2026</span> SafeSphere Interactive Solutions. Team 4, CET257 Enterprise Project, University of Sunderland.</p>
+      <p><a href="index.html">Home</a> · <a href="demo.html">Live Demo</a> · <a href="#top">Back to top</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=20261014_06"></script>
+</body>
+</html>
+

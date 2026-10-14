@@ -1,0 +1,7 @@
+.git
+.vercel
+node_modules
+README.md
+MARKETING-PLAN.md
+.env
+.env.*

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Process · How We Work · SafeSphere</title>
+  <meta name="description" content="Explore SafeSphere's 5-stage engineering lifecycle: Discover, Design, Build, Verify, and Refine.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css?v=20261014_06">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="index.html" aria-label="SafeSphere Interactive Solutions, home">
+        <img src="logo.png" alt="SafeSphere Logo" width="40" height="40">
+        <span><strong>SafeSphere</strong><small>Interactive Solutions</small></span>
+      </a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" aria-label="Primary">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="work.html">Our work</a></li>
+          <li><a href="demo.html">Live Demo</a></li>
+          <li><a href="process.html" class="active" aria-current="page">Process</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="brand.html">Brand</a></li>
+          <li><a class="btn btn-sm" href="contact.html">Contact us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-hero">
+      <div class="wrap">
+        <p class="eyebrow">Engineering Methodology</p>
+        <h1>How We Work</h1>
+        <p class="lead narrow">A disciplined 5-stage lifecycle bridging user needs, regulatory standards, and rigorous software verification.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <ol class="steps">
+          <li>
+            <div class="step-num">1</div>
+            <h3>Discover</h3>
+            <p>We conduct stakeholder interviews and PACT analysis (People, Activities, Context, Technology) to uncover the exact operational risks, shift routines, and compliance gaps on the ground.</p>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <h3>Design</h3>
+            <p>We formulate formal user stories with testable acceptance criteria, database entity-relationship diagrams (ERDs), API specifications, and interactive UX wireframes.</p>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <h3>Build</h3>
+            <p>Our engineers implement a clean three-tier architecture. Role-based access control (RBAC), validation, and session integrity are strictly enforced on the server rather than trusting client state.</p>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <h3>Verify</h3>
+            <p>A requirements-based test plan keeps every client requirement traceable to an automated test. We run unit tests (pytest, Vitest), end-to-end browser tests (Playwright), and WCAG audits.</p>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <h3>Refine</h3>
+            <p>We run structured feedback sessions with client trainers, shift supervisors, and operatives, fine-tuning visual clarity, prompt language, and scenario realism before final sign-off.</p>
+          </li>
+        </ol>
+
+        <div class="grid two" style="margin-top:4rem;align-items:center;">
+          <article class="card">
+            <h3>PACT Analysis in Practice</h3>
+            <p>Before writing code for SafeShift, we mapped out the operational environment:</p>
+            <ul class="tick">
+              <li><strong>People:</strong> High-turnover warehouse operatives with diverse language backgrounds and varied digital literacy.</li>
+              <li><strong>Activities:</strong> Repetitive heavy lifting, pallet de-stacking, and sharing narrow lanes with moving forklifts.</li>
+              <li><strong>Context:</strong> Fast-paced, noisy distribution hubs with strict 24-hour dispatch targets.</li>
+              <li><strong>Technology:</strong> Shared terminal PCs and ruggedised mobile touch tablets requiring quick session handoffs.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Requirements Traceability Matrix</h3>
+            <p>Every feature in SafeShift is directly indexed to a verifiable test and HSE regulation:</p>
+            <ul class="tick">
+              <li><strong>REQ-01 (Hazard Recognition):</strong> Traced to Test Suite `test_hazard_spotting.py` &amp; HSE HSG76.</li>
+              <li><strong>REQ-02 (RBAC Security):</strong> Traced to Test Suite `test_auth_permissions.py` (JWT tokens).</li>
+              <li><strong>REQ-03 (Audit Persistence):</strong> Traced to Database migration `003_attempts_audit_table.sql`.</li>
+              <li><strong>REQ-04 (Accessibility):</strong> Traced to automated Axe-core automated accessibility suite.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div style="text-align:center;margin-top:3.5rem;">
+          <a href="demo.html" class="btn">Test the Live Simulator &rarr;</a>
+          <a href="skills.html" class="btn btn-ghost" style="margin-left:1rem;">View Team Technical Skills</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap foot">
+      <p>&copy; <span id="year">2026</span> SafeSphere Interactive Solutions. Team 4, CET257 Enterprise Project, University of Sunderland.</p>
+      <p><a href="index.html">Home</a> · <a href="contact.html">Contact Us</a> · <a href="#top">Back to top</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=20261014_06"></script>
+</body>
+</html>
+
