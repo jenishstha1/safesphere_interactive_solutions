@@ -11,6 +11,8 @@
 html{scroll-behavior:smooth;scroll-padding-top:5rem}
 body{margin:0;font-family:var(--font);line-height:1.65;color:var(--fg);
   background:linear-gradient(135deg,var(--canvas),var(--mid) 50%,var(--end)) fixed}
+p, .card p, .lead, article p, .steps p, dd, .drawer-desc{text-align:justify!important;text-justify:inter-word!important}
+.role, .card .role, .person .role{text-align:center!important}
 img{max-width:100%;height:auto}
 a{color:var(--accent)}
 a:hover{color:var(--accent-h)}
@@ -30,7 +32,8 @@ a:hover{color:var(--accent-h)}
 nav ul{display:flex;gap:1.1rem;align-items:center;list-style:none;margin:0;padding:0}
 nav a{color:var(--fg);text-decoration:none;font-weight:500;transition:color .15s}
 nav a:hover{color:var(--accent)}
-nav a.active,nav a[aria-current="page"]{color:var(--accent)!important;font-weight:700}
+nav a:not(.btn).active,nav a:not(.btn)[aria-current="page"]{color:var(--accent)!important;font-weight:700}
+nav a.btn.active,nav a.btn[aria-current="page"]{color:var(--on-accent)!important;background:var(--accent-h)!important;box-shadow:0 0 0 2px #fff,0 0 12px rgba(0,229,255,.5);font-weight:700}
 .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--fg);padding:.5rem .9rem;border-radius:8px;font:inherit;cursor:pointer}
 .page-hero{padding:4.5rem 0 2.5rem;border-bottom:1px solid var(--line);background:rgba(12,23,28,.35)}
 .page-hero h1{margin:.2rem 0 .6rem}

@@ -113,7 +113,8 @@ Traditional health and safety training in the warehousing sector relies on passi
 > *We are currently offering free pilot walkthroughs for select North East logistics facilities. Would you be open to a 10-minute feedback call next Tuesday?*  
 >  
 > *Kind regards,*  
-> *Jenish & Team 4 — SafeSphere Interactive Solutions"*
+> *Jenish & Team 4 — SafeSphere Interactive Solutions*  
+> *Email: ctit24a.sht@ismt.edu.np"*
 
 ---
 
